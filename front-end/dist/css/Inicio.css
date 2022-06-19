@@ -1,0 +1,7 @@
+.inicio {
+  display: flex;
+}
+.inicio .container {
+  background-color: aqua;
+  flex: 4;
+}/*# sourceMappingURL=Inicio.css.map */

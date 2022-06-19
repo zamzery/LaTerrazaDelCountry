@@ -4,6 +4,7 @@ import Login from './pages/login/Login';
 import Lista from './pages/lista/Lista';
 import Nuevo from './pages/nuevo/Nuevo';
 import Editar from './pages/editar/Editar';
+import Ordenes from './pages/ordenes/Ordenes';
 
 import {
   BrowserRouter,
@@ -19,6 +20,7 @@ function App() {
           <Route path="/">
             <Route index element={<Inicio />} />
             <Route path="login" element={<Login />}></Route>
+            <Route path="ordenes" element={<Ordenes />}></Route>
             <Route path="usuario">
               <Route index element={<Lista />} />
               <Route path="nuevo" element={<Nuevo />} />
