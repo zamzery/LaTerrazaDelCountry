@@ -1,8 +1,20 @@
 import './Lista.scss';
+import Sidebar from '../../components/sidebar/Sidebar';
+import Navbar from '../../components/navbar/Navbar';
 
 const Lista = () => {
   return (
-    <div>Lista</div>
+    <div className='lista'>
+      <Navbar />
+      <div id="layoutSidenav">
+        <Sidebar />
+        <div id="layoutSidenav_content">
+          <main>
+            
+          </main>
+        </div>
+      </div>
+    </div>
   )
 }
 

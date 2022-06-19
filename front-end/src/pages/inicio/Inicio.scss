@@ -1,7 +1,14 @@
 .inicio{
     display: flex;
-    .container{
-        background-color: aqua;
-        flex:4;
+
+    #layoutSidenav_content{
+        padding: 20px!important;
+        width: 100%!important;
+    }
+
+    .widgets{
+        display: flex;
+        padding: 20px;
+        gap: 20px;
     }
 }

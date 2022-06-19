@@ -1,4 +1,7 @@
 import './Navbar.scss';
+import {Link} from 'react-router-dom';
+import logoPrincipal from './LogoTerrazaSidebar.svg';
+import avatar from './img/profile-2.png';
 
 const Navbar = () => {
   if ( localStorage.getItem( 'sb|sidebar-toggle' ) === 'true' ) {
@@ -13,9 +16,9 @@ const Navbar = () => {
       {/* Sidenav Toggle Button*/}
       <button className="btn btn-icon btn-transparent-light order-1 order-lg-0 me-2 ms-lg-2 me-lg-0" onClick={sidebarToggle}><i className="fa-solid fa-bars"></i></button>
 
-      <a className="navbar-brand pe-3 ps-4 ps-lg-2" href="index.html">
-        <img src="LogoTerrazaSidebar.svg" alt="La Terraza del Country" className="logoPrincipal" />
-      </a>
+      <Link className="navbar-brand pe-3 ps-4 ps-lg-2" to="/">
+        <img src={logoPrincipal} alt="La Terraza del Country" className="logoPrincipal" />
+      </Link>
 
       <ul className="navbar-nav align-items-center ms-auto">
         <li className="nav-item dropdown no-caret d-none d-sm-block me-3 dropdown-notifications">
@@ -61,10 +64,10 @@ const Navbar = () => {
         </li>
 
         <li className="nav-item dropdown no-caret dropdown-user me-3 me-lg-4">
-          <button className="btn btn-icon btn-transparent-dark dropdown-toggle" id="navbarDropdownUserImage" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img className="img-fluid" alt="profile" src="img/illustrations/profiles/profile-1.png" /></button>
+          <button className="btn btn-icon btn-transparent-dark dropdown-toggle" id="navbarDropdownUserImage" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img className="img-fluid" alt="profile" src={avatar} /></button>
           <div className="dropdown-menu dropdown-menu-end border-0 shadow animated--fade-in-up" aria-labelledby="navbarDropdownUserImage">
             <h6 className="dropdown-header d-flex align-items-center">
-              <img className="dropdown-user-img" alt="profile" src="img/illustrations/profiles/profile-1.png" />
+              <img className="dropdown-user-img" alt="profile" src={avatar} />
               <div className="dropdown-user-details">
                 <div className="dropdown-user-details-name">Nombre del Usuario</div>
                 <div className="dropdown-user-details-email">email@delusuario.com</div>

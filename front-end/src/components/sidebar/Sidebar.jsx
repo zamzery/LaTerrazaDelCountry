@@ -1,6 +1,10 @@
 import './Sidebar.scss';
+import {Link} from 'react-router-dom';
 
 const Sidebar = () => {
+  function tituloPaginas(titulo){
+    document.getElementById("tituloPaginas").innerHTML = titulo;
+  }
   return (
     <div id="layoutSidenav_nav">
       <nav className="sidenav shadow-right sidenav-dark">
@@ -9,10 +13,12 @@ const Sidebar = () => {
 
             <div className="sidenav-menu-heading text-white-50">INICIO</div>
 
-            <div className="nav-link text-white" href="/">
-              <div className="nav-link-icon text-white"><i className="fa-solid fa-gauge-high"></i></div>
-              Escritorio
-            </div>
+            <Link to="/" className="text-decoration-none">
+              <div className="nav-link text-white" onClick={tituloPaginas('Inicio')}>
+                <div className="nav-link-icon text-white"><i className="fa-solid fa-gauge-high"></i></div>
+                Escritorio
+              </div>
+            </Link>
 
             <div className="sidenav-menu-heading text-white-50">ADMINISTRACIÓN</div>
 
@@ -23,21 +29,35 @@ const Sidebar = () => {
             </div>
             <div className="collapse" id="collapseDashboards" data-bs-parent="#accordionSidenav">
               <nav className="sidenav-menu-nested nav accordion" id="accordionSidenavPages">
-                <div className="nav-link text-white" href="./usuario"> Usuarios</div>
-                <div className="nav-link text-white" href="proveedor"> Proveedores</div>
-                <div className="nav-link text-white" href="mesa"> Mesas</div>
-                <div className="nav-link text-white" href="categoria"> Categorías</div>
-                <div className="nav-link text-white" href="producto"> Productos</div>
-                <div className="nav-link text-white" href="paquete"> Paquetes</div>
+                <Link to="/usuario" className="text-decoration-none">
+                  <div className="nav-link text-white"> Usuarios</div>
+                </Link>
+                <Link to="/proveedor" className="text-decoration-none">
+                  <div className="nav-link text-white"> Proveedores</div>
+                </Link>
+                <Link to="/mesa" className="text-decoration-none">
+                  <div className="nav-link text-white"> Mesas</div>
+                </Link>
+                <Link to="/categoria" className="text-decoration-none">
+                  <div className="nav-link text-white"> Categorías</div>
+                </Link>
+                <Link to="/producto" className="text-decoration-none">
+                  <div className="nav-link text-white"> Productos</div>
+                </Link>
+                <Link to="/paquete" className="text-decoration-none">
+                  <div className="nav-link text-white"> Paquetes</div>
+                </Link>
               </nav>
             </div>
 
             <div className="sidenav-menu-heading text-white-50">RESTAURANTE</div>
 
-            <div className="nav-link text-white" href="ordenes">
-              <div className="nav-link-icon text-white"><i className="fa-solid fa-file-pen"></i></div>
-              Pedidos
-            </div>
+            <Link to="/pedido" className="text-decoration-none">
+              <div className="nav-link text-white" href="ordenes">
+                <div className="nav-link-icon text-white"><i className="fa-solid fa-file-pen"></i></div>
+                Pedidos
+              </div>
+            </Link>
           </div>
         </div>
 
