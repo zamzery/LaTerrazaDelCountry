@@ -31,32 +31,32 @@ function App() {
                 <Route index element={<Inicio />} />
                 <Route path="login" element={<Login />}></Route>
                 <Route path="usuario">
-                  <Route index element={<Lista />} />
+                  <Route index element={<Lista type="usuario" />} />
                   <Route path="nuevo" element={<Nuevo />} />
                   <Route path=":usuarioID" element={<Editar />} />
                 </Route>
                 <Route path="categoria">
-                  <Route index element={<Lista />} />
+                  <Route index element={<Lista type="categoria" />} />
                   <Route path="nuevo" element={<Nuevo />} />
                   <Route path=":categoriaID" element={<Editar />} />
                 </Route>
                 <Route path="producto">
-                  <Route index element={<Lista />} />
+                  <Route index element={<Lista type="producto" />} />
                   <Route path="nuevo" element={<Nuevo />} />
                   <Route path=":productoID" element={<Editar />} />
                 </Route>
                 <Route path="paquete">
-                  <Route index element={<Lista />} />
+                  <Route index element={<Lista type="paquete" />} />
                   <Route path="nuevo" element={<Nuevo />} />
                   <Route path=":paqueteID" element={<Editar />} />
                 </Route>
                 <Route path="proveedor">
-                  <Route index element={<Lista />} />
+                  <Route index element={<Lista type="proveedor" />} />
                   <Route path="nuevo" element={<Nuevo />} />
                   <Route path=":proveedorID" element={<Editar />} />
                 </Route>
                 <Route path="mesa">
-                  <Route index element={<Lista />} />
+                  <Route index element={<Lista type="mesa" />} />
                   <Route path="nuevo" element={<Nuevo />} />
                   <Route path=":mesaID" element={<Editar />} />
                 </Route>

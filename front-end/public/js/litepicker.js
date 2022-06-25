@@ -10,47 +10,51 @@
 // Litepicker Documentation
 // https://wakirin.github.io/Litepicker
 
-window.addEventListener('DOMContentLoaded', event => {
+window.addEventListener( 'DOMContentLoaded', event => {
 
-    const litepickerSingleDate = document.getElementById('litepickerSingleDate');
-    if (litepickerSingleDate) {
-        new Litepicker({
+    const litepickerSingleDate = document.getElementById( 'litepickerSingleDate' );
+    if ( litepickerSingleDate ) {
+        new Litepicker( {
             element: litepickerSingleDate,
-            format: 'MMM DD, YYYY'
-        });
+            format: 'DD MMM, YYYY',
+            lang: 'es-ES'
+        } );
     }
 
-    const litepickerDateRange = document.getElementById('litepickerDateRange');
-    if (litepickerDateRange) {
-        new Litepicker({
+    const litepickerDateRange = document.getElementById( 'litepickerDateRange' );
+    if ( litepickerDateRange ) {
+        new Litepicker( {
             element: litepickerDateRange,
             singleMode: false,
-            format: 'MMM DD, YYYY'
-        });
+            format: 'DD MMM, YYYY',
+            lang: 'es-ES'
+        } );
     }
 
-    const litepickerDateRange2Months = document.getElementById('litepickerDateRange2Months');
-    if (litepickerDateRange2Months) {
-        new Litepicker({
+    const litepickerDateRange2Months = document.getElementById( 'litepickerDateRange2Months' );
+    if ( litepickerDateRange2Months ) {
+        new Litepicker( {
             element: litepickerDateRange2Months,
             singleMode: false,
             numberOfMonths: 2,
             numberOfColumns: 2,
-            format: 'MMM DD, YYYY'
-        });
+            format: 'DD MMM, YYYY',
+            lang: 'es-ES'
+        } );
     }
 
-    const litepickerRangePlugin = document.getElementById('litepickerRangePlugin');
-    if (litepickerRangePlugin) {
-        new Litepicker({
+    const litepickerRangePlugin = document.getElementById( 'litepickerRangePlugin' );
+    if ( litepickerRangePlugin ) {
+        new Litepicker( {
             element: litepickerRangePlugin,
             startDate: new Date(),
             endDate: new Date(),
             singleMode: false,
             numberOfMonths: 2,
             numberOfColumns: 2,
-            format: 'MMM DD, YYYY',
-            plugins: ['ranges']
-        });
+            format: 'DD MMM, YYYY',
+            plugins: [ 'ranges' ],
+            lang: 'es-ES'
+        } );
     }
-});
+} );

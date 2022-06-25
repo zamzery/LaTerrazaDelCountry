@@ -1,5 +1,7 @@
 import './Sidebar.scss';
 import {Link} from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faGaugeHigh, faScrewdriverWrench,faAngleDown,faFilePen } from '@fortawesome/free-solid-svg-icons'
 
 const Sidebar = () => {
   function tituloPaginas(titulo){
@@ -12,20 +14,26 @@ const Sidebar = () => {
           <div className="nav accordion" id="accordionSidenav">
 
             <div className="sidenav-menu-heading text-white-50">INICIO</div>
-
             <Link to="/" className="text-decoration-none">
               <div className="nav-link text-white" onClick={tituloPaginas('Inicio')}>
-                <div className="nav-link-icon text-white"><i className="fa-solid fa-gauge-high"></i></div>
+                <div className="nav-link-icon text-white"><FontAwesomeIcon className="fa-fw" icon={faGaugeHigh} /></div>
                 Escritorio
               </div>
             </Link>
 
-            <div className="sidenav-menu-heading text-white-50">ADMINISTRACIÓN</div>
+            <div className="sidenav-menu-heading text-white-50">RESTAURANTE</div>
+            <Link to="/pedido" className="text-decoration-none">
+              <div className="nav-link text-white" href="ordenes">
+                <div className="nav-link-icon text-white"><FontAwesomeIcon className="fa-fw" icon={faFilePen} /></div>
+                Pedidos
+              </div>
+            </Link>
 
+            <div className="sidenav-menu-heading text-white-50">ADMINISTRACIÓN</div>
             <div className="nav-link collapsed text-white"  data-bs-toggle="collapse" data-bs-target="#collapseDashboards" aria-expanded="false" aria-controls="collapseDashboards">
-              <div className="nav-link-icon text-white"><i className="fa-solid fa-screwdriver-wrench"></i></div> 
+              <div className="nav-link-icon text-white"><FontAwesomeIcon className="fa-fw" icon={faScrewdriverWrench} /></div> 
               Configurar
-              <div className="sidenav-collapse-arrow text-white"><i className="fas fa-angle-down" /></div>
+              <div className="sidenav-collapse-arrow text-white"><FontAwesomeIcon className="fa-fw" icon={faAngleDown} /></div>
             </div>
             <div className="collapse" id="collapseDashboards" data-bs-parent="#accordionSidenav">
               <nav className="sidenav-menu-nested nav accordion" id="accordionSidenavPages">
@@ -49,15 +57,6 @@ const Sidebar = () => {
                 </Link>
               </nav>
             </div>
-
-            <div className="sidenav-menu-heading text-white-50">RESTAURANTE</div>
-
-            <Link to="/pedido" className="text-decoration-none">
-              <div className="nav-link text-white" href="ordenes">
-                <div className="nav-link-icon text-white"><i className="fa-solid fa-file-pen"></i></div>
-                Pedidos
-              </div>
-            </Link>
           </div>
         </div>
 
