@@ -1,7 +1,7 @@
 import './Sidebar.scss';
 import {Link} from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faGaugeHigh, faScrewdriverWrench,faAngleDown,faFilePen } from '@fortawesome/free-solid-svg-icons'
+import { faGaugeHigh, faScrewdriverWrench,faAngleDown,faFilePen,faBookmark } from '@fortawesome/free-solid-svg-icons'
 
 const Sidebar = () => {
   function tituloPaginas(titulo){
@@ -22,6 +22,13 @@ const Sidebar = () => {
             </Link>
 
             <div className="sidenav-menu-heading text-white-50">RESTAURANTE</div>
+            <Link to="/reservacion" className="text-decoration-none">
+              <div className="nav-link text-white" href="reservacion">
+                <div className="nav-link-icon text-white"><FontAwesomeIcon className="fa-fw" icon={faBookmark} /></div>
+                Reservaciones
+              </div>
+            </Link>
+
             <Link to="/pedido" className="text-decoration-none">
               <div className="nav-link text-white" href="ordenes">
                 <div className="nav-link-icon text-white"><FontAwesomeIcon className="fa-fw" icon={faFilePen} /></div>

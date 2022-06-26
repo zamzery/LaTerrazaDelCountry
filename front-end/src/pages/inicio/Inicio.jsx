@@ -14,19 +14,24 @@ const Inicio = () => {
 				<Sidebar />
 				<div id="layoutSidenav_content">
 					<main>
-						<Header type="escritorio"/>
+						<Header type="escritorio" />
 						<div className="widgets mt-n10 row">
-							<Widget type="reservaciones"/>
-							<Widget type="pedidos"/>
-							<Widget type="ventas"/>
-							<Widget type="balance"/>
+							<Widget type="reservaciones" />
+							<Widget type="pedidos" />
+							<Widget type="ventas" />
+							<Widget type="balance" />
 						</div>
-						<div className="row widgets mt-n5 ">
-							<div className="destacado col-xl-6 mb-4">
+						<div className="widgets row equal">
+							<div className="col-xl-3 col-md-12 mb-4">
 								<Destacado />
 							</div>
-							<div className="grafica col-xl-6 mb-4">
+							<div className="col-xl-9 col-md-12 mb-4">
 								<Grafica />
+							</div>
+						</div>
+						<div className="contenedorTabla row">
+							<div className="col-xl-12 col-md-12 mb-4">
+							
 							</div>
 						</div>
 					</main>

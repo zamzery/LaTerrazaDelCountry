@@ -60,6 +60,11 @@ function App() {
                   <Route path="nuevo" element={<Nuevo />} />
                   <Route path=":mesaID" element={<Editar />} />
                 </Route>
+                <Route path="reservacion">
+                  <Route index element={<Lista type="reservacion" />} />
+                  <Route path="nuevo" element={<Nuevo />} />
+                  <Route path=":reservacionID" element={<Editar />} />
+                </Route>
                 <Route path="pedido" element={<Pedidos />}>
                   <Route path="nuevo" element={<Nuevo />} />
                   <Route path=":pedidoID" element={<Editar />} />
