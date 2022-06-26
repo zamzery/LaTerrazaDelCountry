@@ -5,6 +5,7 @@ use App\Http\Controllers\PaqueteController;
 use App\Http\Controllers\ProveedorController;
 use App\Http\Controllers\MesaController;
 use App\Http\Controllers\CuentaController;
+use App\Http\Controllers\ReservacionController;
 use App\Http\Controllers\PedidoController;
 use App\Http\Controllers\AuthController;
 use Illuminate\Http\Request;
@@ -62,6 +63,12 @@ Route::group(['middleware'=>['auth:sanctum']], function () {
     Route::post('/cuenta/activar/{id}',[CuentaController::class, 'activar']);
     Route::post('/cuenta/desactivar/{id}',[CuentaController::class, 'desactivar']);
 
+    // Rutas de Rservaciones
+    Route::post('/reservacion',[ReservacionController::class, 'store']);
+    Route::put('/reservacion/{id}',[ReservacionController::class, 'update']);
+    Route::post('/reservacion/activar/{id}',[ReservacionController::class, 'activar']);
+    Route::post('/reservacion/desactivar/{id}',[ReservacionController::class, 'desactivar']);
+
     // Rutas de Pedidos
     Route::post('/pedido',[PedidoController::class, 'store']);
     Route::put('/pedido/{id}',[PedidoController::class, 'update']);
@@ -106,6 +113,10 @@ Route::get('/mesa', [MesaController::class, 'index']);
 Route::get('/cuenta/search/{nombre}', [CuentaController::class, 'search']);
 Route::get('/cuenta/{id}', [CuentaController::class, 'show']);
 Route::get('/cuenta', [CuentaController::class, 'index']);
+
+//Rutas de Reservaciones
+Route::get('/reservacion/{id}', [ReservacionController::class, 'show']);
+Route::get('/reservacion', [ReservacionController::class, 'index']);
 
 //Rutas de Pedidos
 Route::get('/pedido/{id}', [PedidoController::class, 'show']);
