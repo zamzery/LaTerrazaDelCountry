@@ -2,6 +2,7 @@ import './Lista.scss';
 import Sidebar from '../../components/sidebar/Sidebar';
 import Navbar from '../../components/navbar/Navbar';
 import Header from '../../components/header/Header';
+import Datatable from '../../components/datatable/Datatable';
 
 const Lista = ({type}) => {
   return (
@@ -11,7 +12,10 @@ const Lista = ({type}) => {
         <Sidebar />
         <div id="layoutSidenav_content">
           <main>
-            <Header type={type}/>            
+            <Header type={type}/>
+            <div className="contenedorTabla">
+              <Datatable />
+            </div>      
           </main>
         </div>
       </div>
