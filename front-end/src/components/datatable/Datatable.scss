@@ -1,4 +1,61 @@
+.cellImg{
+    display:flex;
+    align-items: center;
+
+    .avatar{
+        margin-right: 20px;
+        height: 30px;
+        width: 30px;
+        border-radius: 50%;
+        object-fit: cover;
+    }
+}
+
+.etiquetaStatus{
+    font-size: 0.65em;
+    font-weight: bold;
+    padding: 3px 6px;
+    border-radius: 5px;
+
+    &.activado{
+        color:#FFFFFF;
+        border-color: #1cc88a;
+        background-color: #1cc88a;
+    }
+
+    &.desactivado{
+        color:#FFFFFF;
+        border-color: #e74a3b;;
+        background-color: #e74a3b;;
+    }
+}
+
 .tabla{
     min-height: 500px;
-    width: '100%';
+    height: 631px;
+    display:'block';
+    overflow-x: auto;
+
+    .icono{
+        font-size: 1em;
+        padding: 8px 6px;
+        align-items: center;
+        float: right;
+        border-radius: 5px;
+        color: #FFFFFF;
+        margin: 0 2px;
+
+        
+    }
+    .editar{
+        background-color: Orange;
+    }
+    
+    .desactivar{
+        background-color: #e74a3b;;
+    }
+    
+    .activar{
+        background-color: #1cc88a;
+    }
 }
