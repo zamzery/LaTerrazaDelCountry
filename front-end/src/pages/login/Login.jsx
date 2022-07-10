@@ -14,10 +14,13 @@ const Login = () => {
 	const procesaLogin = (e) => {
 		e.preventDefault();
 
-		if (usuario.substring(usuario.length - 24) === "@gmail.com") {
+		if (
+			usuario.substring(usuario.length - 24) ===
+			"@laterrazadelcountry.com"
+		) {
 			userLogin = usuario;
 		} else {
-			userLogin = usuario + "@gmail.com";
+			userLogin = usuario + "@laterrazadelcountry.com";
 		}
 		signInWithEmailAndPassword(auth, userLogin, contrasena)
 			.then((userCredential) => {
