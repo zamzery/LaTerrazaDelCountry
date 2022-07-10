@@ -1,50 +1,123 @@
-import './Login.scss';
+import { useState } from "react";
+import "./Login.scss";
+import { signInWithEmailAndPassword } from "firebase/auth";
+import { auth } from "../../firebase.config";
 
 const Login = () => {
 	document.body.classList.add("css-gradient");
+
+	//Proceso de inicio de sesión
+	var userLogin = "";
+	const [usuario, setUsuario] = useState("");
+	const [contrasena, setContrasena] = useState("");
+	const [error, setError] = useState(false);
+	const procesaLogin = (e) => {
+		e.preventDefault();
+
+		if (usuario.substring(usuario.length - 24) === "@gmail.com") {
+			userLogin = usuario;
+		} else {
+			userLogin = usuario + "@gmail.com";
+		}
+		signInWithEmailAndPassword(auth, userLogin, contrasena)
+			.then((userCredential) => {
+				// Signed in
+				const user = userCredential.user;
+				console.log(user);
+			})
+			.catch((error) => {
+				setError(true);
+				// const errorMessage = error.message;
+				// if(errorMessage === "EMAIL_NOT_FOUND"){
+				// 	alert(errorMessage);
+				// }
+			});
+	};
+
 	return (
 		<div id="layoutAuthentication">
 			<div id="layoutAuthentication_content">
 				<main>
 					<div className="container-xl px-4">
 						<div className="row justify-content-center">
-						<div className="col-lg-5">
-							{/* Basic login form*/}
-							<div className="card shadow-lg border-0 rounded-lg mt-5">
-								<div className="card-body bg-light rounded">
-									<div className="text-center">
-										<img src="logo512.png" alt="La Terraza del Country" className='logoTerraza'/>
-									</div>
-									{/* Login form*/}
-									<form>
-										{/* Form Group (email address)*/}
-										<div className="mb-3">
-											<label className="small mb-1" htmlFor="inputEmailAddress">Email</label>
-											<input className="form-control" id="inputEmailAddress" type="email" placeholder="Enter email address" />
+							<div className="col-lg-5">
+								{/* Basic login form*/}
+								<div className="card shadow-lg border-0 rounded-lg mt-5">
+									<div className="card-body bg-light rounded">
+										<div className="text-center">
+											<img
+												src="logo512.png"
+												alt="La Terraza del Country"
+												className="logoTerraza"
+											/>
 										</div>
-										{/* Form Group (password)*/}
-										<div className="mb-3">
-											<label className="small mb-1" htmlFor="inputPassword">Contraseña</label>
-											<input className="form-control" id="inputPassword" type="password" placeholder="Enter password" />
-										</div>
-										{/* Form Group (remember password checkbox)*/}
-										<div className="mb-3">
-											<div className="form-check">
-											<input className="form-check-input" id="rememberPasswordCheck" type="checkbox" defaultValue />
-											<label className="form-check-label" htmlFor="rememberPasswordCheck">Recordar Contraseña</label>
+										{/* Login form*/}
+										<form onSubmit={procesaLogin}>
+											{/* Form Group (usuario address)*/}
+											<div className="mb-3">
+												<label
+													className="small mb-1"
+													htmlFor="inputUsuario">
+													Usuario
+												</label>
+												<input
+													className="form-control"
+													id="inputUsuario"
+													type="text"
+													name="usuario"
+													placeholder="Escribe el usuario"
+													onChange={(e) =>
+														setUsuario(
+															e.target.value
+														)
+													}
+												/>
 											</div>
-										</div>
-										{/* Form Group (login box)*/}
-										<div className="d-flex align-items-center justify-content-between mt-4 mb-0">
-											<button className="btn btn-dark botonIngreso" href="dashboard-1.html">Ingresar</button>
-										</div>
-										<div className="mb-0">
-											<button className="small btn btn-link text-dark " href="auth-password-basic.html">¿Olvidaste tu Contraseña?</button>
-										</div>
-									</form>
+											{/* Form Group (password)*/}
+											<div className="mb-4">
+												<label
+													className="small mb-1"
+													htmlFor="inputPassword">
+													Contraseña
+												</label>
+												<input
+													className="form-control"
+													id="inputPassword"
+													type="password"
+													name="contrasena"
+													placeholder="Escribe la contraseña"
+													onChange={(e) =>
+														setContrasena(
+															e.target.value
+														)
+													}
+												/>
+											</div>
+											{error && (
+												<span id="inputError">
+													Email o contraseña
+													incorrectos.
+												</span>
+											)}
+											{/* Form Group (login box)*/}
+											<div className="d-flex align-items-center justify-content-between mt-4 mb-0">
+												<button
+													className="btn btn-dark botonIngreso"
+													href="dashboard-1.html">
+													Ingresar
+												</button>
+											</div>
+											<div className="mb-0">
+												<button
+													className="small btn btn-link text-dark "
+													href="auth-password-basic.html">
+													¿Olvidaste tu Contraseña?
+												</button>
+											</div>
+										</form>
+									</div>
 								</div>
 							</div>
-						</div>
 						</div>
 					</div>
 				</main>
@@ -54,14 +127,28 @@ const Login = () => {
 					<div className="container px-2">
 						<div className="row text-center">
 							<div className="col-md-12 small text-light">
-								<span className="float-left">©Incantu 2022</span> | <button type="button" class="btn btn-link text-light">Política de Privacidad</button> | <button type="button" class="btn btn-link text-light">Términos y Condiciones</button>
+								<span className="float-left">
+									©Incantu 2022
+								</span>{" "}
+								|{" "}
+								<button
+									type="button"
+									className="btn btn-link text-light">
+									Política de Privacidad
+								</button>{" "}
+								|{" "}
+								<button
+									type="button"
+									className="btn btn-link text-light">
+									Términos y Condiciones
+								</button>
 							</div>
 						</div>
 					</div>
 				</footer>
 			</div>
 		</div>
-	)
-}
+	);
+};
 
-export default Login
+export default Login;

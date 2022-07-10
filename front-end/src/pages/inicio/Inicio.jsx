@@ -1,15 +1,15 @@
-import './Inicio.scss';
-import Sidebar from '../../components/sidebar/Sidebar';
-import Navbar from '../../components/navbar/Navbar';
-import Widget from '../../components/widget/Widget';
-import Header from '../../components/header/Header';
-import Grafica from '../../components/grafica/Grafica';
-import Destacado from '../../components/destacado/Destacado';
-import Tabla from '../../components/tabla/Tabla';
+import "./Inicio.scss";
+import Sidebar from "../../components/sidebar/Sidebar";
+import Navbar from "../../components/navbar/Navbar";
+import Widget from "../../components/widget/Widget";
+import Header from "../../components/header/Header";
+import Grafica from "../../components/grafica/Grafica";
+import Destacado from "../../components/destacado/Destacado";
+import Tabla from "../../components/tabla/Tabla";
 
 const Inicio = () => {
 	return (
-		<div className='inicio'>
+		<div className="inicio">
 			<Navbar />
 			<div id="layoutSidenav">
 				<Sidebar />
@@ -39,7 +39,7 @@ const Inicio = () => {
 				</div>
 			</div>
 		</div>
-	)
-}
+	);
+};
 
-export default Inicio
+export default Inicio;

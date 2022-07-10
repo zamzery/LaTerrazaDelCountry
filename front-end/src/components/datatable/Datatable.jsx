@@ -3,6 +3,8 @@ import { DataGrid, esES } from "@mui/x-data-grid";
 import { data, columnas } from "./fakeUsers.js";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { esES as coreEsES } from "@mui/material/locale";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faPen, faTimes, faCheck } from "@fortawesome/free-solid-svg-icons";
 
 const theme = createTheme(
 	{
@@ -13,6 +15,51 @@ const theme = createTheme(
 	esES,
 	coreEsES
 );
+
+const editar = (row) => {
+	console.log(row);
+};
+
+const activarDesactivar = (row) => {
+	console.log(row);
+};
+
+const acciones = [
+	{
+		headerName: "Acciones",
+		sortable: false,
+		field: "acciones",
+		width: 120,
+		align: "center",
+		renderCell: (params) => {
+			return (
+				<div className="acciones">
+					{params.row.activado ? (
+						<FontAwesomeIcon
+							className="icono desactivar"
+							icon={faTimes}
+							onClick={() => activarDesactivar(params.row.id)}
+							fixedWidth
+						/>
+					) : (
+						<FontAwesomeIcon
+							className="icono activar"
+							icon={faCheck}
+							onClick={() => activarDesactivar(params.row.id)}
+							fixedWidth
+						/>
+					)}
+					<FontAwesomeIcon
+						className="icono editar"
+						icon={faPen}
+						onClick={() => editar(params.row.id)}
+						fixedWidth
+					/>
+				</div>
+			);
+		},
+	},
+];
 
 const localizedTextsMap = {
 	columnMenuUnsort: "Desordenar",
@@ -64,7 +111,7 @@ export default function Lista() {
 								<ThemeProvider theme={theme}>
 									<DataGrid
 										rows={data}
-										columns={columnas}
+										columns={columnas.concat(acciones)}
 										stickyHeader
 										pageSize={10}
 										localeText={localizedTextsMap}

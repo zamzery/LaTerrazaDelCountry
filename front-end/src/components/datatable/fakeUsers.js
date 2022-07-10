@@ -1,15 +1,3 @@
-import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {faPen, faTimes, faCheck} from "@fortawesome/free-solid-svg-icons";
-
-const editar = ( row ) => {
-    console.log( row );
-};
-
-const activarDesactivar = ( row ) => {
-    console.log( row );
-};
-
-
 export const columnas = [
     {field: "id", headerName: "#", width: 70, align: "center", },
     {
@@ -42,40 +30,6 @@ export const columnas = [
                 <span className={`etiquetaStatus ${params.row.activado ? 'activado' : 'desactivado'}`}>{params.row.activado ? 'Activado' : 'Desactivado'}</span>
             )
         }
-    },
-    {
-        headerName: "Acciones",
-        sortable: false,
-        field: "acciones",
-        width: 120,
-        align: "center",
-        renderCell: ( params ) => {
-            return (
-                <div className="acciones">
-                    {params.row.activado ? (
-                        <FontAwesomeIcon
-                            className="icono desactivar"
-                            icon={faTimes}
-                            onClick={() => activarDesactivar( params.row.id )}
-                            fixedWidth
-                        />
-                    ) : (
-                        <FontAwesomeIcon
-                            className="icono activar"
-                            icon={faCheck}
-                            onClick={() => activarDesactivar( params.row.id )}
-                            fixedWidth
-                        />
-                    )}
-                    <FontAwesomeIcon
-                        className="icono editar"
-                        icon={faPen}
-                        onClick={() => editar( params.row.id )}
-                        fixedWidth
-                    />
-                </div>
-            );
-        },
     },
 ];
 
