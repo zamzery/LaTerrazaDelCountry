@@ -7,22 +7,21 @@ const Login = () => {
 	document.body.classList.add("css-gradient");
 
 	//Proceso de inicio de sesión
-	var userLogin = "";
 	const [usuario, setUsuario] = useState("");
 	const [contrasena, setContrasena] = useState("");
 	const [error, setError] = useState(false);
 	const procesaLogin = (e) => {
 		e.preventDefault();
 
-		if (
-			usuario.substring(usuario.length - 24) ===
-			"@laterrazadelcountry.com"
-		) {
-			userLogin = usuario;
-		} else {
-			userLogin = usuario + "@laterrazadelcountry.com";
-		}
-		signInWithEmailAndPassword(auth, userLogin, contrasena)
+		// if (
+		// 	usuario.substring(usuario.length - 24) ===
+		// 	"@laterrazadelcountry.com"
+		// ) {
+		// 	userLogin = usuario;
+		// } else {
+		// 	userLogin = usuario + "@laterrazadelcountry.com";
+		// }
+		signInWithEmailAndPassword(auth, usuario, contrasena)
 			.then((userCredential) => {
 				// Signed in
 				const user = userCredential.user;
@@ -131,20 +130,19 @@ const Login = () => {
 						<div className="row text-center">
 							<div className="col-md-12 small text-light">
 								<span className="float-left">
-									©Incantu 2022
-								</span>{" "}
-								|{" "}
-								<button
-									type="button"
-									className="btn btn-link text-light">
-									Política de Privacidad
-								</button>{" "}
-								|{" "}
-								<button
-									type="button"
-									className="btn btn-link text-light">
-									Términos y Condiciones
-								</button>
+									©Incantu 2022 |
+									<button
+										type="button"
+										className="btn btn-link text-light">
+										Política de Privacidad
+									</button>
+									|
+									<button
+										type="button"
+										className="btn btn-link text-light">
+										Términos y Condiciones
+									</button>
+								</span>
 							</div>
 						</div>
 					</div>
