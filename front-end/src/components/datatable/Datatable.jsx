@@ -4,7 +4,13 @@ import { data, columnas } from "./fakeUsers.js";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { esES as coreEsES } from "@mui/material/locale";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faPen, faTimes, faCheck } from "@fortawesome/free-solid-svg-icons";
+import { Link } from "react-router-dom";
+import {
+	faPen,
+	faTimes,
+	faCheck,
+	faPlusCircle,
+} from "@fortawesome/free-solid-svg-icons";
 
 const theme = createTheme(
 	{
@@ -100,13 +106,27 @@ const localizedTextsMap = {
 	columnsPanelHideAllButton: "Ocultar todo",
 };
 
-export default function Lista() {
+export default function Lista(type) {
 	return (
 		<div className="mt-n10">
 			<div className="row">
 				<div className="col-sm-12 mb-4">
 					<div className="card h-100">
 						<div className="card-body h-100 p-5">
+							<div className="agregar">
+								<Link
+									to="/usuario/nuevo"
+									className="link"
+									type={type}>
+									<button className="btn btn-success">
+										<FontAwesomeIcon
+											icon={faPlusCircle}
+											fixedWidth
+										/>
+										<span> Agregar</span>
+									</button>
+								</Link>
+							</div>
 							<div className="tabla table-responsive">
 								<ThemeProvider theme={theme}>
 									<DataGrid
