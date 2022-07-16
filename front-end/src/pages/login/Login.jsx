@@ -1,7 +1,9 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import "./Login.scss";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../../firebase.config";
+import { useNavigate } from "react-router-dom";
+import { AuthContext } from "../../components/context/AuthContext";
 
 const Login = () => {
 	document.body.classList.add("css-gradient");
@@ -10,29 +12,24 @@ const Login = () => {
 	const [usuario, setUsuario] = useState("");
 	const [contrasena, setContrasena] = useState("");
 	const [error, setError] = useState(false);
+	const navigate = useNavigate();
+	const { dispatch } = useContext(AuthContext);
 	const procesaLogin = (e) => {
 		e.preventDefault();
 
-		// if (
-		// 	usuario.substring(usuario.length - 24) ===
-		// 	"@laterrazadelcountry.com"
-		// ) {
-		// 	userLogin = usuario;
-		// } else {
-		// 	userLogin = usuario + "@laterrazadelcountry.com";
-		// }
 		signInWithEmailAndPassword(auth, usuario, contrasena)
 			.then((userCredential) => {
 				// Signed in
 				const user = userCredential.user;
-				console.log(user);
+				dispatch({ type: "LOGIN", payload: user });
+				navigate("/");
 			})
 			.catch((error) => {
 				setError(true);
-				// const errorMessage = error.message;
-				// if(errorMessage === "EMAIL_NOT_FOUND"){
-				// 	alert(errorMessage);
-				// }
+				const errorMessage = error.message;
+				if (errorMessage === "EMAIL_NOT_FOUND") {
+					alert(errorMessage);
+				}
 			});
 	};
 
@@ -111,6 +108,7 @@ const Login = () => {
 											</div>
 											<div className="mb-0">
 												<button
+													type="button"
 													className="small btn btn-link text-dark "
 													href="auth-password-basic.html">
 													¿Olvidaste tu Contraseña?

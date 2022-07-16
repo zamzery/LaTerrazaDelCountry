@@ -1,8 +1,10 @@
 import React from "react";
+import {useContext} from "react";
 import {
   TransitionGroup,
   CSSTransition
 } from "react-transition-group";
+import {AuthContext} from "./components/context/AuthContext";
 
 import Inicio from './pages/inicio/Inicio';
 import Login from './pages/login/Login';
@@ -15,9 +17,16 @@ import {
   BrowserRouter,
   Routes,
   Route,
+  Navigate
 } from "react-router-dom";
 
 function App() {
+  const {currentUser} = useContext( AuthContext );
+
+  const RequireAuth = ( {children} ) => {
+    return currentUser ? children : <Navigate to="/login" />;
+  }
+
   return (
     <div className="app dark">
       <BrowserRouter>
@@ -28,46 +37,46 @@ function App() {
           >
             <Routes>
               <Route path="/">
-                <Route index element={<Inicio />} />
                 <Route path="login" element={<Login />}></Route>
+                <Route index element={<RequireAuth><Inicio /></RequireAuth>} />
                 <Route path="usuario">
-                  <Route index element={<Lista type="usuario" />} />
-                  <Route path="nuevo" element={<Nuevo />} />
-                  <Route path=":usuarioID" element={<Editar />} />
+                  <Route index element={<RequireAuth><Lista type="usuario" /></RequireAuth>} />
+                  <Route path="nuevo" element={<RequireAuth><Nuevo /></RequireAuth>} />
+                  <Route path=":usuarioID" element={<RequireAuth><Editar /></RequireAuth>} />
                 </Route>
                 <Route path="categoria">
-                  <Route index element={<Lista type="categoria" />} />
-                  <Route path="nuevo" element={<Nuevo />} />
-                  <Route path=":categoriaID" element={<Editar />} />
+                  <Route index element={<RequireAuth><Lista type="categoria" /></RequireAuth>} />
+                  <Route path="nuevo" element={<RequireAuth><Nuevo /></RequireAuth>} />
+                  <Route path=":categoriaID" element={<RequireAuth><Editar /></RequireAuth>} />
                 </Route>
                 <Route path="producto">
-                  <Route index element={<Lista type="producto" />} />
-                  <Route path="nuevo" element={<Nuevo />} />
-                  <Route path=":productoID" element={<Editar />} />
+                  <Route index element={<RequireAuth><Lista type="producto" /></RequireAuth>} />
+                  <Route path="nuevo" element={<RequireAuth><Nuevo /></RequireAuth>} />
+                  <Route path=":productoID" element={<RequireAuth><Editar /></RequireAuth>} />
                 </Route>
                 <Route path="paquete">
-                  <Route index element={<Lista type="paquete" />} />
-                  <Route path="nuevo" element={<Nuevo />} />
-                  <Route path=":paqueteID" element={<Editar />} />
+                  <Route index element={<RequireAuth><Lista type="paquete" /></RequireAuth>} />
+                  <Route path="nuevo" element={<RequireAuth><Nuevo /></RequireAuth>} />
+                  <Route path=":paqueteID" element={<RequireAuth><Editar /></RequireAuth>} />
                 </Route>
                 <Route path="proveedor">
-                  <Route index element={<Lista type="proveedor" />} />
-                  <Route path="nuevo" element={<Nuevo />} />
-                  <Route path=":proveedorID" element={<Editar />} />
+                  <Route index element={<RequireAuth><Lista type="proveedor" /></RequireAuth>} />
+                  <Route path="nuevo" element={<RequireAuth><Nuevo /></RequireAuth>} />
+                  <Route path=":proveedorID" element={<RequireAuth><Editar /></RequireAuth>} />
                 </Route>
                 <Route path="mesa">
-                  <Route index element={<Lista type="mesa" />} />
-                  <Route path="nuevo" element={<Nuevo />} />
-                  <Route path=":mesaID" element={<Editar />} />
+                  <Route index element={<RequireAuth><Lista type="mesa" /></RequireAuth>} />
+                  <Route path="nuevo" element={<RequireAuth><Nuevo /></RequireAuth>} />
+                  <Route path=":mesaID" element={<RequireAuth><Editar /></RequireAuth>} />
                 </Route>
                 <Route path="reservacion">
-                  <Route index element={<Lista type="reservacion" />} />
-                  <Route path="nuevo" element={<Nuevo />} />
-                  <Route path=":reservacionID" element={<Editar />} />
+                  <Route index element={<RequireAuth><Lista type="reservacion" /></RequireAuth>} />
+                  <Route path="nuevo" element={<RequireAuth><Nuevo /></RequireAuth>} />
+                  <Route path=":reservacionID" element={<RequireAuth><Editar /></RequireAuth>} />
                 </Route>
-                <Route path="pedido" element={<Pedidos />}>
-                  <Route path="nuevo" element={<Nuevo />} />
-                  <Route path=":pedidoID" element={<Editar />} />
+                <Route path="pedido" element={<RequireAuth><Pedidos /></RequireAuth>}>
+                  <Route path="nuevo" element={<RequireAuth><Nuevo /></RequireAuth>} />
+                  <Route path=":pedidoID" element={<RequireAuth><Editar /></RequireAuth>} />
                 </Route>
               </Route>
             </Routes>
