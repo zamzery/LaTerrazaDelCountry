@@ -1,10 +1,10 @@
 import "./Datatable.scss";
-import { DataGrid, esES } from "@mui/x-data-grid";
-import { data, columnas } from "./fakeUsers.js";
-import { createTheme, ThemeProvider } from "@mui/material/styles";
-import { esES as coreEsES } from "@mui/material/locale";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { Link } from "react-router-dom";
+import {DataGrid, esES} from "@mui/x-data-grid";
+import {data, columnas} from "./fakeUsers.js";
+import {createTheme, ThemeProvider} from "@mui/material/styles";
+import {esES as coreEsES} from "@mui/material/locale";
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import {Link} from "react-router-dom";
 import {
 	faPen,
 	faTimes,
@@ -15,19 +15,19 @@ import {
 const theme = createTheme(
 	{
 		palette: {
-			primary: { main: "#1976d2" },
+			primary: {main: "#1976d2"},
 		},
 	},
 	esES,
 	coreEsES
 );
 
-const editar = (row) => {
-	console.log(row);
+const editar = ( row ) => {
+	console.log( row );
 };
 
-const activarDesactivar = (row) => {
-	console.log(row);
+const activarDesactivar = ( row ) => {
+	console.log( row );
 };
 
 const acciones = [
@@ -37,28 +37,28 @@ const acciones = [
 		field: "acciones",
 		width: 120,
 		align: "center",
-		renderCell: (params) => {
+		renderCell: ( params ) => {
 			return (
 				<div className="acciones">
 					{params.row.activado ? (
 						<FontAwesomeIcon
 							className="icono desactivar"
 							icon={faTimes}
-							onClick={() => activarDesactivar(params.row.id)}
+							onClick={() => activarDesactivar( params.row.id )}
 							fixedWidth
 						/>
 					) : (
 						<FontAwesomeIcon
 							className="icono activar"
 							icon={faCheck}
-							onClick={() => activarDesactivar(params.row.id)}
+							onClick={() => activarDesactivar( params.row.id )}
 							fixedWidth
 						/>
 					)}
 					<FontAwesomeIcon
 						className="icono editar"
 						icon={faPen}
-						onClick={() => editar(params.row.id)}
+						onClick={() => editar( params.row.id )}
 						fixedWidth
 					/>
 				</div>
@@ -106,7 +106,8 @@ const localizedTextsMap = {
 	columnsPanelHideAllButton: "Ocultar todo",
 };
 
-export default function Lista(type) {
+export default function Datatable() {
+
 	return (
 		<div className="mt-n10">
 			<div className="row">
@@ -115,9 +116,8 @@ export default function Lista(type) {
 						<div className="card-body h-100 p-5">
 							<div className="agregar">
 								<Link
-									to="/usuario/nuevo"
-									className="link"
-									type={type}>
+									to="./nuevo"
+									className="link">
 									<button className="btn btn-success">
 										<FontAwesomeIcon
 											icon={faPlusCircle}
@@ -131,11 +131,11 @@ export default function Lista(type) {
 								<ThemeProvider theme={theme}>
 									<DataGrid
 										rows={data}
-										columns={columnas.concat(acciones)}
+										columns={columnas.concat( acciones )}
 										stickyHeader
 										pageSize={10}
 										localeText={localizedTextsMap}
-										rowsPerPageOptions={[10, 25, 50, 100]}
+										rowsPerPageOptions={[ 10, 25, 50, 100 ]}
 									/>
 								</ThemeProvider>
 							</div>

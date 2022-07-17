@@ -4,7 +4,7 @@ import Navbar from "../../components/navbar/Navbar";
 import Header from "../../components/header/Header";
 import Datatable from "../../components/datatable/Datatable";
 
-const Lista = ({ type }) => {
+const Lista = ( {type} ) => {
 	return (
 		<div className="lista">
 			<Navbar />
@@ -14,7 +14,7 @@ const Lista = ({ type }) => {
 					<main>
 						<Header type={type} />
 						<div className="contenedorTabla">
-							<Datatable type={type} />
+							<Datatable />
 						</div>
 					</main>
 				</div>
